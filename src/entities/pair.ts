@@ -28,7 +28,7 @@ export class Pair {
   private readonly tokenAmounts: [TokenAmount, TokenAmount]
 
   public static getAddress(tokenA: Token, tokenB: Token): string {
-    const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
+  const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenA, tokenB]     // does safety checks
 
     if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
@@ -50,7 +50,7 @@ export class Pair {
   public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount) {
     const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
       ? [tokenAmountA, tokenAmountB]
-      : [tokenAmountB, tokenAmountA]
+      : [tokenAmountA, tokenAmountB]
     this.liquidityToken = new Token(
       tokenAmounts[0].token.chainId,
       Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token),
@@ -167,9 +167,9 @@ export class Pair {
     tokenAmountB: TokenAmount
   ): TokenAmount {
     invariant(totalSupply.token.equals(this.liquidityToken), 'LIQUIDITY')
-    const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
+    const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token)   // does safety checks
       ? [tokenAmountA, tokenAmountB]
-      : [tokenAmountB, tokenAmountA]
+      : [tokenAmountA, tokenAmountB]
     invariant(tokenAmounts[0].token.equals(this.token0) && tokenAmounts[1].token.equals(this.token1), 'TOKEN')
 
     let liquidity: JSBI
