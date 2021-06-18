@@ -20,8 +20,8 @@ export class Price extends Fraction {
     for (const [i, pair] of route.pairs.entries()) {
       prices.push(
         route.path[i].equals(pair.token0)
-          ? new Price(pair.reserve0.currency, pair.reserve1.currency, pair.reserve0.raw, pair.reserve1.raw)
-          : new Price(pair.reserve1.currency, pair.reserve0.currency, pair.reserve1.raw, pair.reserve0.raw)
+          ? new Price(pair.reserve00.currency, pair.reserve01.currency, pair.reserve00.raw, pair.reserve01.raw)
+          : new Price(pair.reserve10.currency, pair.reserve11.currency, pair.reserve10.raw, pair.reserve11.raw)
       )
     }
     return prices.slice(1).reduce((accumulator, currentValue) => accumulator.multiply(currentValue), prices[0])

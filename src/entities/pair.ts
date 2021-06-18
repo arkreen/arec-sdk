@@ -57,9 +57,9 @@ export class Pair {
    * @param tokenAmountAOut TokenA Amount in ABB sub-pool
    */
   public constructor(tokenAmountAIn: TokenAmount, tokenAmountBOut: TokenAmount, tokenAmountBIn: TokenAmount, tokenAmountAOut: TokenAmount ) {
-    invariant(  (tokenAmountAIn.token.chainId === tokenAmountBOut.token.chainId) &&
-                (tokenAmountAIn.token.chainId === tokenAmountBIn.token.chainId) &&
-                (tokenAmountAIn.token.chainId === tokenAmountAOut.token.chainId), 'CHAIN_IDS')
+    invariant(  ((tokenAmountAIn.token).chainId === (tokenAmountBOut.token).chainId) &&
+                ((tokenAmountAIn.token).chainId === (tokenAmountBIn.token).chainId) &&
+                ((tokenAmountAIn.token).chainId === (tokenAmountAOut.token).chainId), 'CHAIN_IDS')
 
     invariant(  ((tokenAmountAIn.token).address === (tokenAmountAOut.token).address) &&
                 ((tokenAmountBOut.token).address === (tokenAmountBIn.token).address) &&
@@ -162,7 +162,17 @@ export class Pair {
 
   public reserveOfOutput(outputToken: Token): TokenAmount {
     invariant(this.involvesToken(outputToken), 'TOKEN')
-    return outputToken.equals(this.token0) ? this.reserve01 : this.reserve11
+    return outputToken.equals(this.token1) ? this.reserve01 : this.reserve11
+  }
+
+  public reserveByInput(inputToken: Token): [TokenAmount,TokenAmount] {
+    invariant(this.involvesToken(inputToken), 'TOKEN')
+    return inputToken.equals(this.token0) ? this.tokenAmounts0 : this.tokenAmounts1
+  }
+
+  public reserveByOutput(outputToken: Token):  [TokenAmount,TokenAmount] {
+    invariant(this.involvesToken(outputToken), 'TOKEN')
+    return outputToken.equals(this.token1) ? this.tokenAmounts0 : this.tokenAmounts1
   }
 
   public getOutputAmount(inputAmount: TokenAmount): [TokenAmount, Pair] {

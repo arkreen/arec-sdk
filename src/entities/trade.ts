@@ -194,8 +194,13 @@ export class Trade {
       this.inputAmount.raw,
       this.outputAmount.raw
     )
+    
     this.nextMidPrice = Price.fromRoute(new Route(nextPairs, route.input))
     this.priceImpact = computePriceImpact(route.midPrice, this.inputAmount, this.outputAmount)
+
+    console.log('BBBBBBBBBBBBBBBBBBBB midPrice', route.midPrice.toSignificant(18))
+    console.log('BBBBBBBBBBBBBBBBBBBB executionPrice', this.executionPrice.toSignificant(18))
+    console.log('BBBBBBBBBBBBBBBBBBBB nextMidPrice', this.nextMidPrice.toSignificant(18))   
   }
 
   /**
@@ -274,9 +279,9 @@ export class Trade {
       const pair = pairs[i]
       // pair irrelevant
       if (!pair.token0.equals(amountIn.token) && !pair.token1.equals(amountIn.token)) continue
-//    if (pair.reserve0.equalTo(ZERO) || pair.reserve1.equalTo(ZERO)) continue
-      if (pair.reserveOfOutput(tokenOut).equalTo(ZERO)) continue
-
+      const [reserveIn, reserveOut] = pair.reserveByInput(amountIn.token)
+      if (reserveIn.equalTo(ZERO) || reserveOut.equalTo(ZERO)) continue
+      
       let amountOut: TokenAmount
       try {
         ;[amountOut] = pair.getOutputAmount(amountIn)
@@ -363,8 +368,8 @@ export class Trade {
       const pair = pairs[i]
       // pair irrelevant
       if (!pair.token0.equals(amountOut.token) && !pair.token1.equals(amountOut.token)) continue
-//      if (pair.reserve0.equalTo(ZERO) || pair.reserve1.equalTo(ZERO)) continue
-      if (pair.reserveOfInput(tokenIn).equalTo(ZERO)) continue
+      const [reserveIn, reserveOut] = pair.reserveByOutput(amountOut.token)
+      if (reserveIn.equalTo(ZERO) || reserveOut.equalTo(ZERO)) continue
 
       let amountIn: TokenAmount
       try {
