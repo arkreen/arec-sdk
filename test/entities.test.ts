@@ -7,6 +7,7 @@ const ADDRESSES = [
   '0x0000000000000000000000000000000000000003'
 ]
 const CHAIN_ID = ChainId.RINKEBY
+
 const WETH = _WETH[ChainId.RINKEBY]
 const DECIMAL_PERMUTATIONS: [number, number, number][] = [
   [0, 0, 0],
@@ -22,6 +23,7 @@ describe('entities', () => {
   DECIMAL_PERMUTATIONS.forEach(decimals => {
     describe(`decimals permutation: ${decimals}`, () => {
       let tokens: Token[]
+      
       it('Token', () => {
         tokens = ADDRESSES.map((address, i) => new Token(CHAIN_ID, address, decimals[i]))
         tokens.forEach((token, i) => {
@@ -54,8 +56,8 @@ describe('entities', () => {
           )
         ]
       })
-
-      let route: Route
+      
+      let route: Route   
       it('Route', () => {
         route = new Route(pairs, tokens[0])
         expect(route.pairs).toEqual(pairs)
@@ -63,7 +65,7 @@ describe('entities', () => {
         expect(route.input).toEqual(tokens[0])
         expect(route.output).toEqual(WETH)
       })
-
+      
       it('Price:Route.midPrice', () => {
         invariant(route.input instanceof Token)
         invariant(route.output instanceof Token)
@@ -165,12 +167,12 @@ describe('entities', () => {
                   new TokenAmount(
                     WETH,
                     decimalize(10, WETH.decimals) +
-                      (tokens[1].decimals === 9 ? BigInt('30090280812437312') : BigInt('30090270812437322'))  // 30090280812437312  //  10000000000
+                      (tokens[1].decimals === 9 ? BigInt('10000000000') : BigInt('10'))  // 30090280812437312  //  10000000000
                   ),
                   new TokenAmount(
                     WETH,
                     decimalize(10, WETH.decimals) +
-                      (tokens[1].decimals === 9 ? BigInt('30090280812437312') : BigInt('30090270812437322'))  // 30090270812437322 // 10
+                      (tokens[1].decimals === 9 ? BigInt('10000000000') : BigInt('10'))  // 30090270812437322 // 10
                   ),
                   new TokenAmount(tokens[1], decimalize(1, tokens[1].decimals))
                 )
@@ -180,20 +182,8 @@ describe('entities', () => {
             const inputAmount = new TokenAmount(tokens[1], '1')
             const trade = new Trade(route, inputAmount, TradeType.EXACT_INPUT)
             
-//            console.log('route AAAAAAAAAAAAAAAAAAAA', tokens[1].decimals, route)
-//            console.log('Trade BBBBBBBBBBBBBBBBBBBB', tokens[1].decimals, trade)
-            console.log('Trade AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-
-            console.log('trade.inputAmount', tokens[1].decimals, trade.inputAmount.toSignificant(18))
-            console.log('trade.outputAmount', tokens[1].decimals, trade.outputAmount.toSignificant(18))
-            console.log('trade.executionPrice', tokens[1].decimals, trade.executionPrice.toSignificant(18))
-            console.log('trade.nextMidPrice', tokens[1].decimals, trade.nextMidPrice.toSignificant(18))
-            console.log('trade.priceImpact', tokens[1].decimals, trade.priceImpact.toSignificant(18))                                    
-
-            console.log('trade.priceImpact.toSignificant(18)', trade.priceImpact.toSignificant(18))
-
             expect(trade.priceImpact.toSignificant(18)).toEqual(
-              tokens[1].decimals === 9 ? '0.300000099400899902' : '0.3000000000000001'
+              tokens[1].decimals === 9 ? '0.0000000999999999000000001' : '0.0000000000000000999999999999999999'  // '0.300000099400899902' : '0.3000000000000001'
             )
           }
         })
