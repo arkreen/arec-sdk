@@ -46,7 +46,7 @@ export class CurrencyAmount extends Fraction {
   }
 
   public multiply(other: Fraction | BigintIsh): CurrencyAmount {
-    return new CurrencyAmount(this.currency, this.multiply(other).quotient)
+    return new CurrencyAmount(this.currency, super.multiply(other).quotient)
   }
 
   public toSignificant(
