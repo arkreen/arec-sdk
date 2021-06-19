@@ -109,10 +109,28 @@ export class Pair {
   }
 
   /**
+   * Returns the current mid price of the pair in terms of token0, i.e. the ratio of reserve1 to reserve0
+   */
+   public get token0PriceMean(): Price {
+    return new Price( this.token0, this.token1, 
+                      this.tokenAmounts0[0].add(this.tokenAmounts1[1]).raw, 
+                      this.tokenAmounts0[1].add(this.tokenAmounts1[0]).raw)
+  }
+  
+  /**
    * Returns the current mid price of the pair in terms of token1, i.e. the ratio of reserve0 to reserve1
    */
   public get token1Price(): Price {
     return new Price(this.token1, this.token0, this.tokenAmounts1[0].raw, this.tokenAmounts1[1].raw)
+  }
+
+  /**
+   * Returns the current mid price of the pair in terms of token1, i.e. the ratio of reserve0 to reserve1
+   */
+  public get token1PriceMean(): Price {
+    return new Price( this.token1, this.token0, 
+                      this.tokenAmounts1[0].add(this.tokenAmounts0[1]).raw, 
+                      this.tokenAmounts1[1].add(this.tokenAmounts0[0]).raw)
   }
 
   /**
@@ -122,6 +140,15 @@ export class Pair {
   public priceOf(token: Token): Price {
     invariant(this.involvesToken(token), 'TOKEN')
     return token.equals(this.token0) ? this.token0Price : this.token1Price
+  }
+
+  /**
+   * Return the price of the given token in terms of the other token in the pair based on the two sub-pool average
+   * @param token token to return price of
+   */
+  public priceOfMean(token: Token): Price {
+    invariant(this.involvesToken(token), 'TOKEN')
+    return token.equals(this.token0) ? this.token0PriceMean : this.token1PriceMean
   }
 
   /**
