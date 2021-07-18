@@ -291,7 +291,9 @@ export class Pair {
       const amount1 = JSBI.divide(JSBI.multiply(tokenAmounts[1].raw, totalSupply.raw), isPair0 ? this.reserve01.raw : this.reserve10.raw)
       liquidity = JSBI.lessThanOrEqual(amount0, amount1) ? amount0 : amount1
     }
-    if (!JSBI.greaterThan(liquidity, ZERO)) {
+    if (  JSBI.greaterThan(tokenAmountA.raw, ZERO) && 
+          JSBI.greaterThan(tokenAmountB.raw, ZERO) && 
+          !JSBI.greaterThan(liquidity, ZERO)  ) {
       throw new InsufficientInputAmountError()
     }
     return new TokenAmount(isPair0 ? this.liquidityToken0: this.liquidityToken1, liquidity)

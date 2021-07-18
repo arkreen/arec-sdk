@@ -4,6 +4,7 @@ import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
 
 import { BigintIsh } from '../../constants'
+import { Fraction } from './fraction'
 
 export class TokenAmount extends CurrencyAmount {
   public readonly token: Token
@@ -23,4 +24,9 @@ export class TokenAmount extends CurrencyAmount {
     invariant(this.token.equals(other.token), 'TOKEN')
     return new TokenAmount(this.token, JSBI.subtract(this.raw, other.raw))
   }
+
+  public partial(other: Fraction): TokenAmount {
+    return new TokenAmount(this.token, JSBI.divide(JSBI.multiply(this.raw, other.numerator), other.denominator))
+  }
+
 }

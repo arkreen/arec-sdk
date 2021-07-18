@@ -144,7 +144,7 @@ describe('Router', () => {
               feeOnTransfer: true
             }
           )
-          expect(result.methodName).toEqual('swapExactETHForTokensSupportingFeeOnTransferTokens')
+          expect(result.methodName).toEqual('swapExactETHForTokensFeeOnTransfer')
           expect(result.args.slice(0, -1)).toEqual([
             '0x51',
             [WETH[ChainId.MAINNET].address, token0.address, token1.address],
@@ -163,7 +163,7 @@ describe('Router', () => {
               feeOnTransfer: true
             }
           )
-          expect(result.methodName).toEqual('swapExactTokensForETHSupportingFeeOnTransferTokens')
+          expect(result.methodName).toEqual('swapExactTokensForETHFeeOnTransfer')
           expect(result.args.slice(0, -1)).toEqual([
             '0x64',
             '0x51',
@@ -183,7 +183,7 @@ describe('Router', () => {
               feeOnTransfer: true
             }
           )
-          expect(result.methodName).toEqual('swapExactTokensForTokensSupportingFeeOnTransferTokens')
+          expect(result.methodName).toEqual('swapExactTokensForTokensFeeOnTransfer')
           expect(result.args.slice(0, -1)).toEqual([
             '0x64',
             '0x59',

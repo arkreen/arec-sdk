@@ -45,10 +45,6 @@ export class CurrencyAmount extends Fraction {
     return new CurrencyAmount(this.currency, JSBI.subtract(this.raw, other.raw))
   }
 
-  public multiply(other: Fraction | BigintIsh): CurrencyAmount {
-    return new CurrencyAmount(this.currency, super.multiply(other).quotient)
-  }
-
   public toSignificant(
     significantDigits: number = 6,
     format?: object,
