@@ -36,22 +36,22 @@ export class Currency {
     [ChainId.ROPSTEN]: Currency.ETHER,
     [ChainId.RINKEBY]: Currency.ETHER,
     [ChainId.GÖRLI]: Currency.ETHER,
-    [ChainId.KOVAN]: Currency.ETHER,
-    [ChainId.FANTOM]: Currency.FTM,
-    [ChainId.FANTOM_TESTNET]: Currency.FTM,
-    [ChainId.MATIC]: Currency.MATIC,
-    [ChainId.MATIC_TESTNET]: Currency.MATIC,
-    [ChainId.XDAI]: Currency.XDAI,
-    [ChainId.BSC]: Currency.BNB,
-    [ChainId.BSC_TESTNET]: Currency.BNB,
-    [ChainId.ARBITRUM]: Currency.ETHER,
-    [ChainId.MOONBASE]: Currency.GLMR,
-    [ChainId.AVALANCHE]: Currency.AVAX,
-    [ChainId.FUJI]: Currency.AVAX,
-    [ChainId.HECO]: Currency.HT,
-    [ChainId.HECO_TESTNET]: Currency.HT,
-    [ChainId.HARMONY]: Currency.ONE,
-    [ChainId.HARMONY_TESTNET]: Currency.ONE
+    [ChainId.KOVAN]: Currency.ETHER
+//    [ChainId.FANTOM]: Currency.FTM,
+//    [ChainId.FANTOM_TESTNET]: Currency.FTM,
+//    [ChainId.MATIC]: Currency.MATIC,
+//    [ChainId.MATIC_TESTNET]: Currency.MATIC,
+//    [ChainId.XDAI]: Currency.XDAI,
+//    [ChainId.BSC]: Currency.BNB,
+//    [ChainId.BSC_TESTNET]: Currency.BNB,
+//    [ChainId.ARBITRUM]: Currency.ETHER,
+//    [ChainId.MOONBASE]: Currency.GLMR,
+//    [ChainId.AVALANCHE]: Currency.AVAX,
+//    [ChainId.FUJI]: Currency.AVAX,
+//    [ChainId.HECO]: Currency.HT,
+//    [ChainId.HECO_TESTNET]: Currency.HT,
+//    [ChainId.HARMONY]: Currency.ONE,
+//    [ChainId.HARMONY_TESTNET]: Currency.ONE
   }
 
   /**
