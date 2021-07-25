@@ -1056,10 +1056,10 @@
     "@ethersproject/properties" "^5.0.0"
     "@ethersproject/strings" "^5.0.0"
 
-"@feswap/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@feswap/core/-/core-1.1.0.tgz#d8c23c352c709993bcecdd7b22d3e3e7cac53861"
-  integrity sha512-YI209QPiZfqHhXUqXUQIN/0b2dcQhFVNqQBbj+bcBO9btkWoN/J+jSk9SwYCVJ7AAYJA+kXnRcWjUA3ftL0DXA==
+"@feswap/core@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@feswap/core/-/core-1.2.1.tgz#1e59bfd10de5cf3b7d2bb36fd7751c1d2338380b"
+  integrity sha512-YTvdq8szti+epnoT2Dv+viQ41KE2AfmeQTRkRBp9wbJblCf+fSbI4ZUXOuRJuiwCsWhnybQWDPyzPlpQnPvKIw==
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"

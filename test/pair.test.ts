@@ -15,13 +15,13 @@ describe('Pair', () => {
 
   describe('#getAddress', () => {
     it('returns the correct address', () => {
-      expect(Pair.getAddress(USDC, DAI)).toEqual('0x9AAB418dF0Ed69C390d95dA4B09EBa68Bb8E6099')
+      expect(Pair.getAddress(USDC, DAI)).toEqual('0x70aa4ffa43b52D086B857488B90B35C16e4b030d')
     })
   })
 
   describe('#getAddress', () => {
     it('returns the correct address', () => {
-      expect(Pair.getAddress(DAI, USDC)).toEqual('0x04Ff0664dBE01d0D7368207acF242fB9fae09FEF')
+      expect(Pair.getAddress(DAI, USDC)).toEqual('0xff39Ef2D08D5eE146788047aC1273B8BA3b52531')
     })
   })
 
