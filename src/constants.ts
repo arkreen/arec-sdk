@@ -39,6 +39,22 @@ export enum Rounding {
 
 export const INIT_CODE_HASH: string = '0x9ee363bc4a7af5605ef17ba06c2f9447c61c22beacb5c4647efa122f3aefc8db'
 
+export const NFT_BID_ADDRESS: { [chainId in ChainId]: string } = {
+  [ChainId.MAINNET]:  '0x0aB276b92a6E6d3EcC8D5888D1b15EffEa223923',
+  [ChainId.ROPSTEN]:  '0x06C2De45973Df34DaB22AD0b767d2bE3eca5D178',
+  [ChainId.RINKEBY]:  '0x06C2De45973Df34DaB22AD0b767d2bE3eca5D178',
+  [ChainId.GÖRLI]:    '0x06C2De45973Df34DaB22AD0b767d2bE3eca5D178',
+  [ChainId.KOVAN]:    '0x06C2De45973Df34DaB22AD0b767d2bE3eca5D178'
+}
+
+export const SPONSOR_ADDRESS: { [chainId in ChainId]: string } = {
+  [ChainId.MAINNET]:  '0x74B6F6884FE98259aF4127ca9A5D580Da934E52b',
+  [ChainId.ROPSTEN]:  '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234',
+  [ChainId.RINKEBY]:  '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234',
+  [ChainId.GÖRLI]:    '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234',
+  [ChainId.KOVAN]:    '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234'
+}
+
 export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MAINNET]: '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
   [ChainId.ROPSTEN]: '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
@@ -86,11 +102,11 @@ export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
 }
 
 export const FESW_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.MAINNET]: '0xcfcc81c508a8025879a27257cc0f699f9f2016ab',
-  [ChainId.ROPSTEN]: '0xcfcc81c508a8025879a27257cc0f699f9f2016ab',
-  [ChainId.RINKEBY]: '0xcfcc81c508a8025879a27257cc0f699f9f2016ab',
-  [ChainId.GÖRLI]: '0xcfcc81c508a8025879a27257cc0f699f9f2016ab',
-  [ChainId.KOVAN]: '0xcfcc81c508a8025879a27257cc0f699f9f2016ab'
+  [ChainId.MAINNET]: '0x4269eaec0710b874ea55e2AeDc8Fb66223522Bbe',
+  [ChainId.ROPSTEN]: '0xcfcC81C508a8025879a27257cC0f699F9f2016AB',
+  [ChainId.RINKEBY]: '0xcfcC81C508a8025879a27257cC0f699F9f2016AB',
+  [ChainId.GÖRLI]: '0xcfcC81C508a8025879a27257cC0f699F9f2016AB',
+  [ChainId.KOVAN]: '0xcfcC81C508a8025879a27257cC0f699F9f2016AB'
 //  [ChainId.FANTOM]: '',
 //  [ChainId.FANTOM_TESTNET]: '',
 //  [ChainId.MATIC]: '',
@@ -178,12 +194,20 @@ export const MAKER_ADDRESS: { [chainId in ChainId]: string } = {
 }
 */
 
+export const GOVERNANCE_ADDRESS: { [chainId in ChainId]: string } = {
+  [ChainId.MAINNET]:  '0x77F98c147a37564c32E48054Bff7692A1F97f343',
+  [ChainId.ROPSTEN]:  '0x179E988DaE54D010e86F288C4872d7d3eB4EF0C6',
+  [ChainId.RINKEBY]:  '0x179E988DaE54D010e86F288C4872d7d3eB4EF0C6',
+  [ChainId.GÖRLI]:    '0x179E988DaE54D010e86F288C4872d7d3eB4EF0C6',
+  [ChainId.KOVAN]:    '0x179E988DaE54D010e86F288C4872d7d3eB4EF0C6'
+}
+
 export const TIMELOCK_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.MAINNET]: '0x9a8541Ddf3a932a9A922B607e9CF7301f1d47bD1',
-  [ChainId.ROPSTEN]: '',
-  [ChainId.RINKEBY]: '',
-  [ChainId.GÖRLI]: '',
-  [ChainId.KOVAN]: ''
+  [ChainId.MAINNET]:  '0xd24347C40f4ed36f326f82E3bEFFfaf3B8D436a1',
+  [ChainId.ROPSTEN]:  '0xFA2Dbaa137b3Bd13d8f1758311Ae909397EC18AB',
+  [ChainId.RINKEBY]:  '0xFA2Dbaa137b3Bd13d8f1758311Ae909397EC18AB',
+  [ChainId.GÖRLI]:    '0xFA2Dbaa137b3Bd13d8f1758311Ae909397EC18AB',
+  [ChainId.KOVAN]:    '0xFA2Dbaa137b3Bd13d8f1758311Ae909397EC18AB'
 //  [ChainId.FANTOM]: '',
 //  [ChainId.FANTOM_TESTNET]: '',
 //  [ChainId.MATIC]: '',
