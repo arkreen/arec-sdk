@@ -37,7 +37,16 @@ export enum Rounding {
   ROUND_UP
 }
 
-export const INIT_CODE_HASH: string = '0x9ee363bc4a7af5605ef17ba06c2f9447c61c22beacb5c4647efa122f3aefc8db'
+//export const INIT_CODE_HASH: string = '0x9ee363bc4a7af5605ef17ba06c2f9447c61c22beacb5c4647efa122f3aefc8db'
+//export const INIT_CODE_HASH: string = '0x235c27e3d008975dad617b3081b116c4f5866b73d1153e5f5322c4e464d6370d'
+
+export const INIT_CODE_HASH: { [chainId in ChainId]: string } = {
+  [ChainId.MAINNET]:  '0x235c27e3d008975dad617b3081b116c4f5866b73d1153e5f5322c4e464d6370d',
+  [ChainId.ROPSTEN]:  '0x9ee363bc4a7af5605ef17ba06c2f9447c61c22beacb5c4647efa122f3aefc8db',
+  [ChainId.RINKEBY]:  '0x9ee363bc4a7af5605ef17ba06c2f9447c61c22beacb5c4647efa122f3aefc8db',
+  [ChainId.GÖRLI]:    '0x235c27e3d008975dad617b3081b116c4f5866b73d1153e5f5322c4e464d6370d',
+  [ChainId.KOVAN]:    '0x9ee363bc4a7af5605ef17ba06c2f9447c61c22beacb5c4647efa122f3aefc8db'
+}
 
 export const NFT_BID_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MAINNET]:  '0x0aB276b92a6E6d3EcC8D5888D1b15EffEa223923',
@@ -56,11 +65,11 @@ export const SPONSOR_ADDRESS: { [chainId in ChainId]: string } = {
 }
 
 export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.MAINNET]: '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
-  [ChainId.ROPSTEN]: '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
-  [ChainId.RINKEBY]: '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
-  [ChainId.GÖRLI]: '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
-  [ChainId.KOVAN]: '0x75f7b730c51610aba6f3d89deb4864f156c8e747'
+  [ChainId.MAINNET]:  '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
+  [ChainId.ROPSTEN]:  '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
+  [ChainId.RINKEBY]:  '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
+  [ChainId.GÖRLI]:    '0x615835Cc22064a17df5A3E8AE22F58e67bCcB778',
+  [ChainId.KOVAN]:    '0x75f7b730c51610aba6f3d89deb4864f156c8e747'
 //  [ChainId.FANTOM]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
 //  [ChainId.FANTOM_TESTNET]: '',
 //  [ChainId.MATIC]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
@@ -79,11 +88,11 @@ export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
 }
 
 export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.MAINNET]: '0x657db4e8c4258570cc7dd61031777901439e8079',
-  [ChainId.RINKEBY]: '0x657db4e8c4258570cc7dd61031777901439e8079',
-  [ChainId.ROPSTEN]: '0x657db4e8c4258570cc7dd61031777901439e8079',
-  [ChainId.GÖRLI]: '0x657db4e8c4258570cc7dd61031777901439e8079',
-  [ChainId.KOVAN]: '0x657db4e8c4258570cc7dd61031777901439e8079'
+  [ChainId.MAINNET]:  '0x657db4e8c4258570cc7dd61031777901439e8079',
+  [ChainId.RINKEBY]:  '0x657db4e8c4258570cc7dd61031777901439e8079',
+  [ChainId.ROPSTEN]:  '0x657db4e8c4258570cc7dd61031777901439e8079',
+  [ChainId.GÖRLI]:    '0x4db0ba23261Fd5905d0Ba15b3eb35F334BeEbEA5',
+  [ChainId.KOVAN]:    '0x657db4e8c4258570cc7dd61031777901439e8079'
 //  [ChainId.FANTOM]: '',
 //  [ChainId.FANTOM_TESTNET]: '',
 //  [ChainId.MATIC]: '',
