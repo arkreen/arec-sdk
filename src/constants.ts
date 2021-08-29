@@ -65,7 +65,7 @@ export const SPONSOR_ADDRESS: { [chainId in ChainId]: string } = {
 }
 
 export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.MAINNET]:  '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
+  [ChainId.MAINNET]:  '0xDC7Ef6b5d1A15768c0520e54E7414e1E0297E141',
   [ChainId.ROPSTEN]:  '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
   [ChainId.RINKEBY]:  '0x75f7b730c51610aba6f3d89deb4864f156c8e747',
   [ChainId.GÖRLI]:    '0x1BdB1555bDc425183ad56FcB31c06205726FEFB0',
@@ -88,7 +88,7 @@ export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
 }
 
 export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.MAINNET]:  '0x657db4e8c4258570cc7dd61031777901439e8079',
+  [ChainId.MAINNET]:  '0xDC7Ef6b5d1A15768c0520e54E7414e1E0297E141',
   [ChainId.RINKEBY]:  '0x657db4e8c4258570cc7dd61031777901439e8079',
   [ChainId.ROPSTEN]:  '0x657db4e8c4258570cc7dd61031777901439e8079',
   [ChainId.GÖRLI]:    '0xD5e8666620eaf809D32c5F2D739C49953FBd6e12',
