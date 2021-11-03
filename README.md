@@ -31,6 +31,11 @@ Build project
 ```sh
 yarn build
 ```
+Publish project
+
+```sh
+yarn publish --access public
+```
 
 Run tests
 
@@ -41,22 +46,22 @@ yarn test
 You should see output like the following:
 
 ```sh
-yarn run v1.22.10
+yarn run v1.22.11
 $ tsdx test
- PASS  test/constants.test.ts (8.828s)
- PASS  test/token.test.ts (12.143s)
- PASS  test/router.test.ts (12.174s)
- PASS  test/entities.test.ts (12.238s)
- PASS  test/route.test.ts (12.159s)
- PASS  test/fraction.test.ts (12.287s)
- PASS  test/miscellaneous.test.ts (12.397s)
- PASS  test/trade.test.ts (12.506s)
- PASS  test/pair.test.ts (12.429s)
+ PASS  test/constants.test.ts (48.379s)
+ PASS  test/token.test.ts (63.259s)
+ PASS  test/route.test.ts (63.343s)
+ PASS  test/fraction.test.ts (63.697s)
+ PASS  test/pair.test.ts (63.848s)
+ PASS  test/miscellaneous.test.ts (63.844s)
+ PASS  test/router.test.ts (63.956s)
+ PASS  test/entities.test.ts (64.298s)
+ PASS  test/trade.test.ts (64.406s)
 
 Test Suites: 1 skipped, 9 passed, 9 of 10 total
 Tests:       3 skipped, 126 passed, 129 total
 Snapshots:   0 total
-Time:        15.407s
+Time:        80.668s
 Ran all test suites.
-Done in 17.19s.
+Done in 92.46s.
 ```

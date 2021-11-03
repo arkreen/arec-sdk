@@ -31,27 +31,42 @@ export class Currency {
 
   public static readonly ONE: Currency = new Currency(18, 'ONE', 'Harmony')
 
+  public static readonly PALM: Currency = new Currency(18, 'PALM', 'Palm')
+
+  public static readonly OKT: Currency = new Currency(18, 'OKT', 'OKExChain')
+
+  public static readonly MOVR: Currency = new Currency(18, 'MOVR', 'Moonriver')
+
+  public static readonly CELO: Currency = new Currency(18, 'CELO', 'Celo')
+
   public static readonly NATIVE = {
     [ChainId.MAINNET]: Currency.ETHER,
     [ChainId.ROPSTEN]: Currency.ETHER,
     [ChainId.RINKEBY]: Currency.ETHER,
     [ChainId.GÖRLI]: Currency.ETHER,
-    [ChainId.KOVAN]: Currency.ETHER
-//    [ChainId.FANTOM]: Currency.FTM,
-//    [ChainId.FANTOM_TESTNET]: Currency.FTM,
-//    [ChainId.MATIC]: Currency.MATIC,
-//    [ChainId.MATIC_TESTNET]: Currency.MATIC,
-//    [ChainId.XDAI]: Currency.XDAI,
-//    [ChainId.BSC]: Currency.BNB,
-//    [ChainId.BSC_TESTNET]: Currency.BNB,
-//    [ChainId.ARBITRUM]: Currency.ETHER,
-//    [ChainId.MOONBASE]: Currency.GLMR,
-//    [ChainId.AVALANCHE]: Currency.AVAX,
-//    [ChainId.FUJI]: Currency.AVAX,
-//    [ChainId.HECO]: Currency.HT,
-//    [ChainId.HECO_TESTNET]: Currency.HT,
-//    [ChainId.HARMONY]: Currency.ONE,
-//    [ChainId.HARMONY_TESTNET]: Currency.ONE
+    [ChainId.KOVAN]: Currency.ETHER,
+    [ChainId.BSC]: Currency.BNB,
+    [ChainId.BSC_TESTNET]: Currency.BNB,
+    [ChainId.MATIC]: Currency.MATIC,
+    [ChainId.MATIC_TESTNET]: Currency.MATIC,
+    [ChainId.HARMONY]: Currency.ONE,
+    [ChainId.HARMONY_TESTNET]: Currency.ONE,
+    [ChainId.FANTOM]: Currency.FTM,
+    [ChainId.FANTOM_TESTNET]: Currency.FTM,
+    [ChainId.ARBITRUM]: Currency.ETHER,
+    [ChainId.ARBITRUM_TESTNET]: Currency.ETHER,
+    [ChainId.AVALANCHE]: Currency.AVAX,
+    [ChainId.AVALANCHE_TESTNET]: Currency.AVAX,
+    [ChainId.HECO]: Currency.HT,
+    [ChainId.HECO_TESTNET]: Currency.HT,
+    [ChainId.OKEX]: Currency.OKT,
+    [ChainId.OKEX_TESTNET]: Currency.OKT,    
+    [ChainId.PALM]: Currency.PALM,
+    [ChainId.PALM_TESTNET]: Currency.PALM,
+    [ChainId.MOONBEAM]: Currency.GLMR,
+    [ChainId.MOONRIVER]: Currency.MOVR,
+    [ChainId.XDAI]: Currency.XDAI,
+    [ChainId.CELO]: Currency.CELO
   }
 
   /**
@@ -119,5 +134,6 @@ export class Currency {
 }
 
 const ETHER = Currency.ETHER
+const NATIVE = Currency.NATIVE
 
-export { ETHER }
+export { ETHER, NATIVE }
