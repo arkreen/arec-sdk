@@ -20,23 +20,23 @@ describe('Trade', () => {
   const token3 = new Token(ChainId.MAINNET, '0x0000000000000000000000000000000000000004', 18, 't3')
 
   const pair_0_1 = new Pair(new TokenAmount(token0, JSBI.BigInt(1000)), new TokenAmount(token1, JSBI.BigInt(1000)),
-                            new TokenAmount(token1, JSBI.BigInt(1000)), new TokenAmount(token0, JSBI.BigInt(1000)))
+                            new TokenAmount(token1, JSBI.BigInt(1000)), new TokenAmount(token0, JSBI.BigInt(1000)), 10100)
   const pair_0_2 = new Pair(new TokenAmount(token0, JSBI.BigInt(1000)), new TokenAmount(token2, JSBI.BigInt(1100)),
-                            new TokenAmount(token2, JSBI.BigInt(1100)), new TokenAmount(token0, JSBI.BigInt(1000)))
+                            new TokenAmount(token2, JSBI.BigInt(1100)), new TokenAmount(token0, JSBI.BigInt(1000)), 10100)
   const pair_0_3 = new Pair(new TokenAmount(token0, JSBI.BigInt(1000)), new TokenAmount(token3, JSBI.BigInt(900)),
-                            new TokenAmount(token3, JSBI.BigInt(900)), new TokenAmount(token0, JSBI.BigInt(1000)))
+                            new TokenAmount(token3, JSBI.BigInt(900)), new TokenAmount(token0, JSBI.BigInt(1000)), 10100)
   const pair_1_2 = new Pair(new TokenAmount(token1, JSBI.BigInt(1200)), new TokenAmount(token2, JSBI.BigInt(1000)),
-                            new TokenAmount(token2, JSBI.BigInt(1000)), new TokenAmount(token1, JSBI.BigInt(1200)))
+                            new TokenAmount(token2, JSBI.BigInt(1000)), new TokenAmount(token1, JSBI.BigInt(1200)), 10100)
   const pair_1_3 = new Pair(new TokenAmount(token1, JSBI.BigInt(1200)), new TokenAmount(token3, JSBI.BigInt(1300)),
-                            new TokenAmount(token3, JSBI.BigInt(1300)), new TokenAmount(token1, JSBI.BigInt(1200)))
+                            new TokenAmount(token3, JSBI.BigInt(1300)), new TokenAmount(token1, JSBI.BigInt(1200)), 10100)
 
   const pair_weth_0 = new Pair(
     new TokenAmount(WETH[ChainId.MAINNET], JSBI.BigInt(1000)), new TokenAmount(token0, JSBI.BigInt(1000)),
-    new TokenAmount(token0, JSBI.BigInt(1000)), new TokenAmount(WETH[ChainId.MAINNET], JSBI.BigInt(1000))   
+    new TokenAmount(token0, JSBI.BigInt(1000)), new TokenAmount(WETH[ChainId.MAINNET], JSBI.BigInt(1000)), 10100   
   )
 
   const empty_pair_0_1 = new Pair(new TokenAmount(token0, JSBI.BigInt(0)), new TokenAmount(token1, JSBI.BigInt(0)),
-                                  new TokenAmount(token1, JSBI.BigInt(0)), new TokenAmount(token0, JSBI.BigInt(0))
+                                  new TokenAmount(token1, JSBI.BigInt(0)), new TokenAmount(token0, JSBI.BigInt(0)), 10100
   )
 
   it('can be constructed with ETHER as input', () => {

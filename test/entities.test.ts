@@ -40,19 +40,19 @@ describe('entities', () => {
             new TokenAmount(tokens[0], decimalize(1, tokens[0].decimals)),
             new TokenAmount(tokens[1], decimalize(1, tokens[1].decimals)),
             new TokenAmount(tokens[1], decimalize(1, tokens[1].decimals)),
-            new TokenAmount(tokens[0], decimalize(1, tokens[0].decimals))
+            new TokenAmount(tokens[0], decimalize(1, tokens[0].decimals)), 10100
           ),
           new Pair(
             new TokenAmount(tokens[1], decimalize(1, tokens[1].decimals)),
             new TokenAmount(tokens[2], decimalize(1, tokens[2].decimals)),
             new TokenAmount(tokens[2], decimalize(1, tokens[2].decimals)),
-            new TokenAmount(tokens[1], decimalize(1, tokens[1].decimals))
+            new TokenAmount(tokens[1], decimalize(1, tokens[1].decimals)), 10100
           ),
           new Pair(
             new TokenAmount(tokens[2], decimalize(1, tokens[2].decimals)),
             new TokenAmount(WETH, decimalize(1234, WETH.decimals)),
             new TokenAmount(WETH, decimalize(1234, WETH.decimals)),
-            new TokenAmount(tokens[2], decimalize(1, tokens[2].decimals)),
+            new TokenAmount(tokens[2], decimalize(1, tokens[2].decimals)), 10100
           )
         ]
       })
@@ -114,7 +114,7 @@ describe('entities', () => {
                 new TokenAmount(tokens[1], decimalize(5, tokens[1].decimals)),
                 new TokenAmount(WETH, decimalize(10, WETH.decimals)),
                 new TokenAmount(WETH, decimalize(10, WETH.decimals)),
-                new TokenAmount(tokens[1], decimalize(5, tokens[1].decimals)),
+                new TokenAmount(tokens[1], decimalize(5, tokens[1].decimals)), 10100
               )
             ],
             tokens[1]
@@ -132,8 +132,8 @@ describe('entities', () => {
           expect(trade.executionPrice.quote(inputAmount)).toEqual(expectedOutputAmount)
           expect(trade.executionPrice.invert().quote(expectedOutputAmount)).toEqual(inputAmount)
 
-          expect(trade.nextMidPrice.toSignificant(18)).toEqual('1.38888888888888889')   //  1.38958368072925352
-          expect(trade.nextMidPrice.invert().toSignificant(18)).toEqual('0.72')         //  0.71964
+          expect(trade.nextMidPrice.toSignificant(18)).toEqual('1.66666666666666667')   //  1.38958368072925352 1.38888888888888889
+          expect(trade.nextMidPrice.invert().toSignificant(18)).toEqual('0.6')         //  0.71964 0.72
 
           expect(trade.priceImpact.toSignificant(18)).toEqual('16.6666666666666667')    //  16.8751042187760547
         })
@@ -152,8 +152,8 @@ describe('entities', () => {
           expect(trade.executionPrice.quote(expectedInputAmount)).toEqual(outputAmount)
           expect(trade.executionPrice.invert().quote(outputAmount)).toEqual(expectedInputAmount)
 
-          expect(trade.nextMidPrice.toSignificant(18)).toEqual('1.38888888888888889')     // 1.38958368072925352
-          expect(trade.nextMidPrice.invert().toSignificant(18)).toEqual('0.72')           // 0.71964
+          expect(trade.nextMidPrice.toSignificant(18)).toEqual('1.66666666666666667')     // 1.38958368072925352 1.38888888888888889
+          expect(trade.nextMidPrice.invert().toSignificant(18)).toEqual('0.6')           // 0.71964 0.72
 
           expect(trade.priceImpact.toSignificant(18)).toEqual('16.6666666666666667')      // 16.8751042187760547
         })
@@ -174,7 +174,7 @@ describe('entities', () => {
                     decimalize(10, WETH.decimals) +
                       (tokens[1].decimals === 9 ? BigInt('10000000000') : BigInt('10'))  // 30090270812437322 // 10
                   ),
-                  new TokenAmount(tokens[1], decimalize(1, tokens[1].decimals))
+                  new TokenAmount(tokens[1], decimalize(1, tokens[1].decimals)), 10100
                 )
               ],
               tokens[1]

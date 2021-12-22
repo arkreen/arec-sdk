@@ -25,6 +25,7 @@ let PAIR_ADDRESS_CACHE: { [token0Address: string]: { [token1Address: string]: st
 export class Pair {
   public readonly liquidityToken0: Token
   public readonly liquidityToken1: Token
+  public readonly triggerRate: JSBI
   private readonly tokenAmounts0: [TokenAmount, TokenAmount]
   private readonly tokenAmounts1: [TokenAmount, TokenAmount]
 
@@ -56,7 +57,9 @@ export class Pair {
    * @param tokenAmountBIn  TokenB Amount in ABB sub-pool 
    * @param tokenAmountAOut TokenA Amount in ABB sub-pool
    */
-  public constructor(tokenAmountAIn: TokenAmount, tokenAmountBOut: TokenAmount, tokenAmountBIn: TokenAmount, tokenAmountAOut: TokenAmount ) {
+  public constructor( tokenAmountAIn: TokenAmount, tokenAmountBOut: TokenAmount, 
+                      tokenAmountBIn: TokenAmount, tokenAmountAOut: TokenAmount,
+                      arbitrageTriggerRate: number ) {
     invariant(  ((tokenAmountAIn.token).chainId === (tokenAmountBOut.token).chainId) &&
                 ((tokenAmountAIn.token).chainId === (tokenAmountBIn.token).chainId) &&
                 ((tokenAmountAIn.token).chainId === (tokenAmountAOut.token).chainId), 'CHAIN_IDS')
@@ -83,6 +86,7 @@ export class Pair {
 
     this.tokenAmounts0 = tokenAmounts0 as [TokenAmount, TokenAmount]
     this.tokenAmounts1 = tokenAmounts1 as [TokenAmount, TokenAmount]
+    this.triggerRate = JSBI.BigInt(arbitrageTriggerRate)
   }
 
   public get token0(): Token {
@@ -202,6 +206,24 @@ export class Pair {
     return outputToken.equals(this.token1) ? this.tokenAmounts0 : this.tokenAmounts1
   }
 
+  public getArbitrageAmount(): [TokenAmount, TokenAmount] {
+    const totalA = this.reserve00.add(this.reserve11)
+    const totalB = this.reserve10.add(this.reserve01)
+    const timesInput = JSBI.multiply(this.reserve00.raw, this.reserve10.raw)
+    const timesOutput = JSBI.multiply(this.reserve01.raw, this.reserve11.raw)
+    let swapVolumeA: JSBI = JSBI.BigInt(0)
+    let swapVolumeB: JSBI = JSBI.BigInt(0)
+
+    if(JSBI.greaterThan(JSBI.multiply(timesInput,JSBI.BigInt(10000)), JSBI.multiply(timesOutput, this.triggerRate))) {
+      const numerator = JSBI.subtract(timesInput, timesOutput)
+      swapVolumeA = JSBI.divide(numerator, totalB.multiply('2').numerator)
+      swapVolumeB = JSBI.divide(numerator, totalA.multiply('2').numerator)
+    } 
+    const arbitrageA = new TokenAmount(this.token0, swapVolumeA)
+    const arbitrageB = new TokenAmount(this.token1, swapVolumeB)
+    return [arbitrageA, arbitrageB]
+  }
+
   public getOutputAmount(inputAmount: TokenAmount): [TokenAmount, Pair] {
     invariant(this.involvesToken(inputAmount.token), 'TOKEN')
     const tokenOutput = inputAmount.token.equals(this.token0) ? this.token1 : this.token0
@@ -212,8 +234,14 @@ export class Pair {
       throw new InsufficientReservesError()
     }
  
-    const inputReserve = this.reserveOfInput(inputAmount.token)
-    const outputReserve = this.reserveOfOutput(tokenOutput)
+    const [arbitrageA, arbitrageB] = this.getArbitrageAmount()
+
+    const [arbitrageInput, arbitrageOutPut] = inputAmount.token.equals(this.token0)
+                                              ? [arbitrageA, arbitrageB]
+                                              : [arbitrageB, arbitrageA]
+
+    const inputReserve = this.reserveOfInput(inputAmount.token).subtract(arbitrageInput)
+    const outputReserve = this.reserveOfOutput(tokenOutput).add(arbitrageOutPut)
     const numerator = JSBI.multiply(outputReserve.raw, inputAmount.raw )
     const denominator = JSBI.add(inputReserve.raw, inputAmount.raw)
 
@@ -228,9 +256,9 @@ export class Pair {
     // no internal arbitrage consider, may it's better to consider internal arbitrage, but it is complicated for fee-on Token
     const newPair = inputAmount.token.equals(this.token0)
                     ? new Pair( inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), 
-                                this.tokenAmounts1[0], this.tokenAmounts1[1])
+                                this.tokenAmounts1[0], this.tokenAmounts1[1], JSBI.toNumber(this.triggerRate))
                     : new Pair( this.tokenAmounts0[0], this.tokenAmounts0[1], 
-                                inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))
+                                inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), JSBI.toNumber(this.triggerRate))
 
     return [outputAmount, newPair]
   }
@@ -246,10 +274,15 @@ export class Pair {
       throw new InsufficientReservesError()
     }
 
-    const outputReserve = this.reserveOfOutput(outputAmount.token)
-    const inputReserve = this.reserveOfInput(tokenInput)
+    const [arbitrageA, arbitrageB] = this.getArbitrageAmount()
+    const [arbitrageInput, arbitrageOutPut] = outputAmount.token.equals(this.token1)
+                                              ? [arbitrageA, arbitrageB]
+                                              : [arbitrageB, arbitrageA]
+    const outputReserve = this.reserveOfOutput(outputAmount.token).add(arbitrageOutPut)
+    const inputReserve = this.reserveOfInput(tokenInput).subtract(arbitrageInput)
     const numerator = JSBI.multiply(inputReserve.raw, outputAmount.raw)
     const denominator = JSBI.subtract(outputReserve.raw, outputAmount.raw)
+
     const inputAmount = new TokenAmount(
       tokenInput,
       JSBI.add(JSBI.divide(numerator, denominator), ONE)
@@ -258,9 +291,9 @@ export class Pair {
     // no internal arbitrage consider, may it's better to consider internal arbitrage, but it is complicated for fee-on Token
     const newPair = outputAmount.token.equals(this.token1)
                     ? new Pair( inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), 
-                                this.tokenAmounts1[0], this.tokenAmounts1[1])
+                                this.tokenAmounts1[0], this.tokenAmounts1[1], JSBI.toNumber(this.triggerRate))
                     : new Pair( this.tokenAmounts0[0], this.tokenAmounts0[1], 
-                                inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))
+                                inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), JSBI.toNumber(this.triggerRate))
 
     return [inputAmount, newPair]
   }
