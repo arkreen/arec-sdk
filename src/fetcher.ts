@@ -71,6 +71,6 @@ export abstract class Fetcher {
     const [reserves0, reserves1] = await new Contract(address, IFeSwapPair.abi, provider).getReserves()
     const balances = tokenA.sortsBefore(tokenB) ? [reserves0, reserves1] : [reserves0, reserves1]
     return new Pair(new TokenAmount(tokenA, balances[0]), new TokenAmount(tokenB, balances[1]),
-                    new TokenAmount(tokenB, balances[1]), new TokenAmount(tokenA, balances[0]))
+                    new TokenAmount(tokenB, balances[1]), new TokenAmount(tokenA, balances[0]), 10100)
   }
 }
