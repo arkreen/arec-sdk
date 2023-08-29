@@ -28,20 +28,21 @@ Trace:
 
 npm manifest: 
   {
-    "name": "@feswap/sdk",
+    "name": "@arec/sdk",
     "license": "MIT",
-    "version": "1.7.3",
-    "description": "🌈 An SDK for building applications on top of feswap.",
+    "version": "1.0.0",
+    "description": "🌈 An SDK for building applications on top of feswap dex.",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "files": [
       "dist"
     ],
-    "repository": "https://github.com/feswap/feswap-sdk",
+    "repository": "https://github.com/arkreen/arec-sdk",
     "keywords": [
       "uniswap",
       "feswap",
-      "ethereum"
+      "ethereum",
+      "arec"
     ],
     "module": "dist/sdk.esm.js",
     "scripts": {

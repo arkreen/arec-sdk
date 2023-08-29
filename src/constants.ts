@@ -31,6 +31,7 @@ export enum ChainId {
   MOONRIVER = 1285,
   XDAI = 100,
   CELO = 42220,
+  CELO_TESTNET = 44787
 }
 
 export enum TradeType {
@@ -71,7 +72,8 @@ export const INIT_CODE_HASH: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0x02a87956ec2f5e710fa13bbfe751d68112c843cdd501d3fcc9e744ade9c32428',
   [ChainId.MOONRIVER]:          '0x02a87956ec2f5e710fa13bbfe751d68112c843cdd501d3fcc9e744ade9c32428',
   [ChainId.XDAI]:               '0x02a87956ec2f5e710fa13bbfe751d68112c843cdd501d3fcc9e744ade9c32428',
-  [ChainId.CELO]:               '0x02a87956ec2f5e710fa13bbfe751d68112c843cdd501d3fcc9e744ade9c32428'
+  [ChainId.CELO]:               '0x02a87956ec2f5e710fa13bbfe751d68112c843cdd501d3fcc9e744ade9c32428',
+  [ChainId.CELO_TESTNET]:       '0x02a87956ec2f5e710fa13bbfe751d68112c843cdd501d3fcc9e744ade9c32428',
 }
 
 export const NFT_BID_ADDRESS: { [chainId in ChainId]: string } = {
@@ -101,7 +103,8 @@ export const NFT_BID_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0x928d6F271F4CdEa1A544F40898350d1Ba55018D4',
   [ChainId.MOONRIVER]:          '0x928d6F271F4CdEa1A544F40898350d1Ba55018D4',
   [ChainId.XDAI]:               '0x928d6F271F4CdEa1A544F40898350d1Ba55018D4',
-  [ChainId.CELO]:               '0x928d6F271F4CdEa1A544F40898350d1Ba55018D4'
+  [ChainId.CELO]:               '0x928d6F271F4CdEa1A544F40898350d1Ba55018D4',
+  [ChainId.CELO_TESTNET]:       '0x928d6F271F4CdEa1A544F40898350d1Ba55018D4',
 }
 
 export const SPONSOR_ADDRESS: { [chainId in ChainId]: string } = {
@@ -131,7 +134,8 @@ export const SPONSOR_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234',
   [ChainId.MOONRIVER]:          '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234',
   [ChainId.XDAI]:               '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234',
-  [ChainId.CELO]:               '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234'
+  [ChainId.CELO]:               '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234',
+  [ChainId.CELO_TESTNET]:       '0xB7196A981De991cdCAEe06Eb7c39c84B5277d234',
 }
 
 export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
@@ -161,7 +165,8 @@ export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0x69752367a0720963Aec78760EeAa208aFcF09122',
   [ChainId.MOONRIVER]:          '0x69752367a0720963Aec78760EeAa208aFcF09122',
   [ChainId.XDAI]:               '0x69752367a0720963Aec78760EeAa208aFcF09122',
-  [ChainId.CELO]:               '0x69752367a0720963Aec78760EeAa208aFcF09122'
+  [ChainId.CELO]:               '0x69752367a0720963Aec78760EeAa208aFcF09122',
+  [ChainId.CELO_TESTNET]:       '0x69752367a0720963Aec78760EeAa208aFcF09122',
 }
 
 export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
@@ -191,7 +196,8 @@ export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0x364cD4f1202a48e9e6C6De502B2dde572Ef57281',
   [ChainId.MOONRIVER]:          '0x364cD4f1202a48e9e6C6De502B2dde572Ef57281',
   [ChainId.XDAI]:               '0x364cD4f1202a48e9e6C6De502B2dde572Ef57281',
-  [ChainId.CELO]:               '0x364cD4f1202a48e9e6C6De502B2dde572Ef57281'
+  [ChainId.CELO]:               '0x364cD4f1202a48e9e6C6De502B2dde572Ef57281',
+  [ChainId.CELO_TESTNET]:       '0x364cD4f1202a48e9e6C6De502B2dde572Ef57281',
 }
 
 export const FESW_ADDRESS: { [chainId in ChainId]: string } = {
@@ -221,7 +227,8 @@ export const FESW_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0x31C6ba28f9692564a6ebd516676f2D49ac8C0dba',
   [ChainId.MOONRIVER]:          '0x31C6ba28f9692564a6ebd516676f2D49ac8C0dba',
   [ChainId.XDAI]:               '0x31C6ba28f9692564a6ebd516676f2D49ac8C0dba',
-  [ChainId.CELO]:               '0x31C6ba28f9692564a6ebd516676f2D49ac8C0dba'
+  [ChainId.CELO]:               '0x31C6ba28f9692564a6ebd516676f2D49ac8C0dba',
+  [ChainId.CELO_TESTNET]:       '0x31C6ba28f9692564a6ebd516676f2D49ac8C0dba',
 }
 
 export const STAKE_FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
@@ -251,7 +258,8 @@ export const STAKE_FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0x9B592DbCf45F8260657BC9Ac8BB3bCFE2C83d99C',
   [ChainId.MOONRIVER]:          '0x9B592DbCf45F8260657BC9Ac8BB3bCFE2C83d99C',
   [ChainId.XDAI]:               '0x9B592DbCf45F8260657BC9Ac8BB3bCFE2C83d99C',
-  [ChainId.CELO]:               '0x9B592DbCf45F8260657BC9Ac8BB3bCFE2C83d99C'
+  [ChainId.CELO]:               '0x9B592DbCf45F8260657BC9Ac8BB3bCFE2C83d99C',
+  [ChainId.CELO_TESTNET]:       '0x9B592DbCf45F8260657BC9Ac8BB3bCFE2C83d99C',
 }
 
 export const GOVERNANCE_ADDRESS: { [chainId in ChainId]: string } = {
@@ -281,7 +289,8 @@ export const GOVERNANCE_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0x7725f9A802E1612eC5e5Bf65A73D4318cdA0C4a9',
   [ChainId.MOONRIVER]:          '0x7725f9A802E1612eC5e5Bf65A73D4318cdA0C4a9',
   [ChainId.XDAI]:               '0x7725f9A802E1612eC5e5Bf65A73D4318cdA0C4a9',
-  [ChainId.CELO]:               '0x7725f9A802E1612eC5e5Bf65A73D4318cdA0C4a9'
+  [ChainId.CELO]:               '0x7725f9A802E1612eC5e5Bf65A73D4318cdA0C4a9',
+  [ChainId.CELO_TESTNET]:       '0x7725f9A802E1612eC5e5Bf65A73D4318cdA0C4a9',
 }
 
 export const TIMELOCK_ADDRESS: { [chainId in ChainId]: string } = {
@@ -311,7 +320,8 @@ export const TIMELOCK_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]:           '0xC2078563d1cE2B8fF241A087B37344A7Ea0a07Dd',
   [ChainId.MOONRIVER]:          '0xC2078563d1cE2B8fF241A087B37344A7Ea0a07Dd',
   [ChainId.XDAI]:               '0xC2078563d1cE2B8fF241A087B37344A7Ea0a07Dd',
-  [ChainId.CELO]:               '0xC2078563d1cE2B8fF241A087B37344A7Ea0a07Dd'
+  [ChainId.CELO]:               '0xC2078563d1cE2B8fF241A087B37344A7Ea0a07Dd',
+  [ChainId.CELO_TESTNET]:       '0xC2078563d1cE2B8fF241A087B37344A7Ea0a07Dd',
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)

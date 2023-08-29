@@ -1,8 +1,6 @@
-# Feswap SDK
+# AREC SDK
 
-In-depth documentation on this SDK is available at [uniswap.org](https://uniswap.org/docs/v2/SDK/getting-started/).
-
-This modifies uniswap-sdk's UniswapV2Factory address. The new address for feswap is  `0xFE7a9e76864704A09584E235C3968Ba3D1C6743b`.
+This this SDK is forked from FeSwap SDK to supprt AREC Dapp.
 
 ## Running tests
 
@@ -11,13 +9,13 @@ To run the tests, follow these steps. You must have at least node v10 and [yarn]
 First clone the repository:
 
 ```sh
-git clone https://github.com/feswap/feswap-sdk.git
+git clone https://github.com/arkreen/arec-sdk.git
 ```
 
-Move into the feswap-sdk working directory
+Move into the arec-sdk working directory
 
 ```sh
-cd feswap-sdk/
+cd arec-sdk/
 ```
 
 Install dependencies
