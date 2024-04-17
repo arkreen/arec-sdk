@@ -49,6 +49,7 @@ export class Currency {
     [ChainId.BSC_TESTNET]: Currency.BNB,
     [ChainId.MATIC]: Currency.MATIC,
     [ChainId.MATIC_TESTNET]: Currency.MATIC,
+    [ChainId.MATIC_AMOY_TESTNET]: Currency.MATIC,
     [ChainId.HARMONY]: Currency.ONE,
     [ChainId.HARMONY_TESTNET]: Currency.ONE,
     [ChainId.FANTOM]: Currency.FTM,
@@ -66,7 +67,8 @@ export class Currency {
     [ChainId.MOONBEAM]: Currency.GLMR,
     [ChainId.MOONRIVER]: Currency.MOVR,
     [ChainId.XDAI]: Currency.XDAI,
-    [ChainId.CELO]: Currency.CELO
+    [ChainId.CELO]: Currency.CELO,
+    [ChainId.CELO_TESTNET]: Currency.CELO,
   }
 
   /**
